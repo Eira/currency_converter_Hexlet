@@ -4,14 +4,18 @@ CURRENCIES = {'USD', 'RUB', 'GBP', 'EUR'}
 
 
 def main() -> None:
-    """"""
+    """Currency converter."""
     _show_greatings_and_info(CURRENCIES)
 
     user_currency = _get_user_currency(CURRENCIES)
     current_amount = _get_current_amount()
     conversion_currency = _get_conversion_currency(CURRENCIES)
 
-    converted_amount = _process_converted_amount(user_currency, conversion_currency, current_amount)
+    converted_amount = _process_converted_amount(
+        user_currency,
+        conversion_currency,
+        current_amount,
+    )
 
     print(f"Итого: {round(converted_amount, 2)} {conversion_currency}")
 
@@ -46,9 +50,10 @@ def _get_user_currency(currency: set[str]) -> str:
 def _get_current_amount() -> float:
     """Get amount of money to convert."""
     while True:
-        current_amount = input('Введите имеющуюся сумму: ')
         try:
-            current_amount = float(current_amount)
+            current_amount = float(
+                input('Введите имеющуюся сумму: '),
+            )
         except ValueError:
             current_amount = 0.0
 
@@ -63,7 +68,9 @@ def _get_conversion_currency(currency: set[str]) -> str:
     conversion_currency = input('Выберете валюту для конвертации:').upper()
 
     while conversion_currency not in currency:
-        conversion_currency = input('Некорректная валюта.\n Попробуйте еще раз:')
+        conversion_currency = input(
+            'Некорректная валюта.\n Попробуйте еще раз:',
+        )
 
     return conversion_currency
 
@@ -72,7 +79,7 @@ def _process_converted_amount(
     user_currency: str,
     conversion_currency: str,
     current_amount: float,
-) -> str:
+) -> float:
     """Calculate converted amount of money and return it."""
     return current_amount * get_rate(user_currency, conversion_currency)
 
