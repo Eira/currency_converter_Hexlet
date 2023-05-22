@@ -12,7 +12,7 @@ $ pip install requests mypy flake8
 
 ### Local run
 ```
-python -m main
+python -m converter
 mypy .
 flake8 *.py
 ```
