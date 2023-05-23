@@ -17,7 +17,7 @@ def main() -> None:
         current_amount,
     )
 
-    print(f"Итого: {round(converted_amount, 2)} {conversion_currency}")
+    print('Итого: %.2f %s' % (converted_amount, conversion_currency))
 
 
 def _show_greatings_and_info(currencies: set[str]) -> None:
