@@ -31,10 +31,8 @@ def _show_greatings_and_info(currencies: set[str]) -> None:
 
     print("Вам предложены следующие валюты:")
 
-    key_counter = 1
-    for name in currencies:
-        print(f'    {key_counter}. {name}')
-        key_counter += 1
+    for index, name in enumerate(currencies):
+        print(f'    {index + 1}. {name}')
 
 
 def _get_user_currency(currency: set[str]) -> str:
